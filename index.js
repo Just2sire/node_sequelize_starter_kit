@@ -2,7 +2,7 @@
 
 const dotenv = require('dotenv');
 dotenv.config();
-const { PORT } = process.env;
+const { SERVER_PORT } = process.env;
 
 /* Sequelize */
 
@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
-app.listen(PORT, () => {
+app.listen(SERVER_PORT, () => {
     sequelize.authenticate()
         .then(() => {
 
@@ -32,7 +32,7 @@ app.listen(PORT, () => {
             console.log("Connecté à la DB ");
         })
         .catch((err) => console.log("Erreur lors de la connexion à la DB:" + err.message));
-    console.log(`L'application tourne sur le port ${PORT}`);
+    console.log(`L'application tourne sur le port ${SERVER_PORT}`);
 })
 
 /* Route config */
